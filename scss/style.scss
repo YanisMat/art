@@ -1,0 +1,359 @@
+$dad-color: #c68642;
+$kid-color: #f1c27d;
+
+$length: 1.25s;
+$ease: cubic-bezier(1, 0.35, 0, 2);
+$small-shadow: -1px 1px 1px rgba(#000,.2);
+
+%pseudo {
+  content: "";
+  display: block;
+  position: absolute;
+}
+
+@keyframes arm-swing {
+  0%, 10% { transform: rotate(80deg); }
+  40%, 60% { transform: rotate(20deg); }
+  90%, 100% { transform: rotate(80deg); }
+}
+
+@keyframes arm-swing-opp {
+  0%, 10% { transform: rotate(-80deg); }
+  40%, 60% { transform: rotate(-20deg); }
+  90%, 100% { transform: rotate(-80deg); }
+}
+
+@keyframes toss {
+  0% { top: 20%; transform: rotate(20deg); }
+  40%, 50% { top: -60%; transform: rotate(0); }
+  90%, 100% { top:20%; transform: rotate(20deg); }
+}
+
+@keyframes tip {
+  0% { transform: rotate(10deg); }
+  40%, 50% { transform: rotate(0); }
+  90%, 100% { transform: rotate(10deg); }
+}
+
+@keyframes blink {
+    0% { transform: scaleX(1) scaleY(1); } 
+    1% { transform: scaleX(1.3) scaleY(0.1); } 
+    2% { transform: scaleX(1) scaleY(1); } 
+    60% { transform: scaleX(1) scaleY(1); } 
+    61% { transform: scaleX(1.3) scaleY(0.1);} 
+    62% { transform: scaleX(1) scaleY(1); } 
+    100% { transform: scaleX(1) scaleY(1); }
+}
+
+@keyframes eye {
+  0% { top: 6px;}
+  40%, 50% { top: 2px;}
+  100% { top: 6px;  }
+}
+
+@keyframes mouth {
+  0%, 100% { 
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    border-width: 8px 5px 5px 5px;
+    border-color: #fff transparent transparent transparent;
+    top: 35px; }
+  40%, 50% { 
+    width: 10px; 
+    height: 5px;
+    border-radius: 50%;   
+    border-width: 2px;
+    border-color: transparent transparent #fff transparent;
+    top: 30px; }
+}
+
+@keyframes color-change {
+    0%, 100% {
+      background-color: #7dcdcc;
+    }
+    25% {
+      background-color: #df202c;
+    }
+    50% {
+      background-color: #ff6766;
+    }
+    75% {
+      background-color: #525a5d;
+    }
+}
+
+body {
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  animation: color-change $length*10 linear infinite;
+}
+
+.container, .body {
+  position: relative;
+}
+
+.arm {
+  position: absolute;
+  border-radius: 50px;
+}
+
+.eye {
+  position: absolute;
+  border-radius: 50%;
+  display: block;
+}
+
+.ear {
+  @extend %pseudo;
+  border-radius: 50%;
+}
+
+.pants {
+  position: absolute;
+  bottom: 0;
+  z-index: 50;
+}
+
+.body, .pants {
+  border-radius: 50px 50px 0 0;
+}
+
+.container {
+  width: 0px;
+  margin: 30vh auto;
+  &:before { //background circle
+    @extend %pseudo;
+    width: 200px;
+    height: 200px;
+    left: 40px;
+    top: 30px;
+    background: rgba(#fafafa, .8);
+    border-radius: 50%;
+  }
+}
+
+#message {
+  margin-left: -465px;
+  font-family: 'Bungee Shade', cursive;
+  font-size: 100px;
+  color: #fafafa;
+  text-shadow: -2px 2px 1px rgba(#000,.2);
+  &:after{
+    @extend %pseudo;
+    width: 867px;
+    padding: 30px;
+    top: -140px;
+    content: "To all the father figures out there";
+    z-index: -1;
+    // background-image: repeating-linear-gradient(
+    //   -55deg,
+    //   rgba(#fafafa,.1),
+    //   rgba(#fafafa,.1) 2px,
+    //   transparent 2px,
+    //   transparent 20px
+    // );
+    
+    // box-shadow: -5px 5px 0 #fafafa,
+    //             -8px 8px 1px #ccc;
+  }
+  &.one:after {
+    width: 890px;
+    content: "Thanks for every amazing thing you do";
+  }
+  &.two:after {
+    width: 867px;
+    content: "We hope you have a great Father's Day";
+  }
+}
+
+.dad {
+  position: relative;
+  margin-left: 100px;
+  .body {  
+    width: 100px;
+    height: 200px;
+    background-color: $dad-color;
+    animation: tip $length $ease infinite;
+    &:after { //mouth
+      @extend %pseudo;
+      width: 30px;
+      height: 10px;
+      top: 70px;
+      left: 40px;
+      border: 3px solid transparent;
+      border-radius: 50%;
+      border-bottom: 3px solid darken($dad-color,40%);
+    }
+    &:before { //shoes
+      @extend %pseudo;
+      width: 110px;
+      height: 10px;
+      z-index: 100;
+      bottom: 0;
+      background-color: darken($dad-color, 50%);
+    }
+    .ear { //ear
+      width: 20px;
+      height: 20px;
+      background: $dad-color; 
+      &.left {
+        top: 60px;
+        left: -10px;
+        box-shadow: $small-shadow;
+      }
+      &.right {
+        top: 60px;
+        right: -10px;
+      }
+    }
+    .eye {
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      top: 50px;
+      border-top: 2px solid darken($dad-color, 20%);
+      animation: blink $length infinite;
+        &.left {
+          left: 30px;
+        }
+        &.right {
+          left: 70px;
+        }
+        &:after { //pupils
+          @extend %pseudo;
+          width: 10px;
+          height: 10px; 
+          right: 2px;
+          background: darken($dad-color, 30%);
+          border-radius: 50%;
+          animation: eye $length infinite;
+        }
+        &:before { //eyebrows
+          @extend %pseudo;
+          width: 20px;
+          height: 20px;
+          top: -15px;
+          left: -5px;
+          border-radius: 50%;
+          border: 3px solid transparent;
+          border-top: 3px solid darken($dad-color, 30%);
+        }
+    }
+  }
+  .pants {
+    background-color: darken($dad-color, 10%);
+    width: 100px;
+    height: 100px;
+    &:before { //shirt
+      @extend %pseudo;
+      width: 100px;
+      height: 45px;
+      background: #fff;
+    }
+    &:after { //pant leg
+      @extend %pseudo;
+      width: 3px;
+      height: 30px;
+      background: darken($dad-color, 50%);
+      bottom: 0;
+      left: 60px;
+    }
+  }
+  .arm {
+    background-color: $dad-color;
+    width: 30px;
+    height: 60px;
+    animation: arm-swing $length ease-out infinite;
+    transform-origin: 0 100%;
+    &.right {
+      left: 65px;
+      top: 35px; 
+    }
+    &.left {
+      left: 40px;
+      top: 45px;
+      z-index: 100;
+      box-shadow: $small-shadow;
+    }
+  }
+}
+
+.kid {
+  position: absolute;
+  z-index: 51;
+  left: 200px;
+  animation: toss $length ease-in-out infinite;
+  .body {
+    background-color: $kid-color;
+    width: 50px;
+    height: 100px;
+    &:after { //mouth
+      @extend %pseudo;
+      width: 0;
+      height: 0;
+      left: 15px;
+      border-style: solid;
+      animation: mouth $length ease-in-out infinite;
+    }
+    &:before { //shoes
+      @extend %pseudo;
+      width: 56px;
+      height: 3px;
+      z-index: 100;
+      bottom: 0;
+      left: -3px;
+      background-color: darken($dad-color, 50%);
+    }
+    .eye {
+      width: 10px;
+      height: 10px;
+      background: transparent;
+      border: 2px solid transparent;
+      border-top: 2px solid darken($kid-color, 30%);
+      top: 25px;
+      z-index: 1;
+      &.right {
+        left: 5px;
+      }
+      &.left {
+        left: 25px;
+      }
+    }
+    .ear {
+      width: 10px;
+      height: 10px;
+      background: $kid-color;
+      top: 30px;
+      &.left {
+        left: -5px;
+      }
+      &.right {
+        right: -5px;
+      }
+    }
+  }
+  .pants {
+    background-color: darken($kid-color, 10%);
+    width: 50px;
+    height: 50px;
+    &:before { //shirt
+      @extend %pseudo;
+      width: 50px;
+      height: 25px;
+      background: #fff;
+    }
+  }
+  .arm {
+    background-color: $kid-color;
+    width: 20px;
+    height: 40px;
+    top: 35px;
+    &.right {
+      left: -5px;
+      animation: arm-swing $length $ease infinite;
+    }
+    &.left {
+      left: 35px;
+      animation: arm-swing-opp $length $ease infinite;
+    }
+  }
+}
