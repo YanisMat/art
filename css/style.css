@@ -315,7 +315,7 @@ body {
 }
 
 #message {
-  margin-left: -465px;
+  margin-left: 100px;
   font-family: 'Bungee Shade', cursive;
   font-size: 100px;
   color: #fafafa;
@@ -325,14 +325,14 @@ body {
   width: 867px;
   padding: 30px;
   top: -140px;
-  content: "To all the father figures out there";
+  content: "fucking people";
   z-index: -1;
 }
 #message.one:after {
   width: 890px;
-  content: "Thanks for every amazing thing you do";
+  content: "Yanis is god";
 }
 #message.two:after {
   width: 867px;
-  content: "We hope you have a great Father's Day";
+  content: "hsedc2020";
 }
