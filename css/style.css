@@ -250,7 +250,7 @@
     background-color: #00BFFF;
   }
   75% {
-    background-color: #7FFF00;
+    background-color: #00FF00;
   }
 }
 @keyframes color-change {
@@ -264,7 +264,7 @@
     background-color: #00BFFF;
   }
   75% {
-    background-color: #7FFF00;
+    background-color: #00FF00;
   }
 }
 body {
