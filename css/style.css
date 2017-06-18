@@ -315,7 +315,7 @@ body {
 }
 
 #message {
-  margin-left: 100px;
+  margin-left: 320px;
   font-family: 'Bungee Shade', cursive;
   font-size: 100px;
   color: #fafafa;
@@ -324,7 +324,7 @@ body {
 #message:after {
   width: 867px;
   padding: 30px;
-  top: -140px;
+  top: 170px;
   content: "fucking people";
   z-index: -1;
 }
