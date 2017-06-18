@@ -240,30 +240,31 @@
 }
 @-webkit-keyframes color-change {
   0%, 100% {
-    background-color: #7dcdcc;
+    background-color: #FF1493
+;
   }
   25% {
-    background-color: #df202c;
+    background-color: #FFFF00;
   }
   50% {
-    background-color: #ff6766;
+    background-color: #00BFFF;
   }
   75% {
-    background-color: #525a5d;
+    background-color: #7FFF00;
   }
 }
 @keyframes color-change {
   0%, 100% {
-    background-color: #7dcdcc;
+    background-color: #FF1493;
   }
   25% {
-    background-color: #df202c;
+    background-color: #FFFF00;
   }
   50% {
-    background-color: #ff6766;
+    background-color: #00BFFF;
   }
   75% {
-    background-color: #525a5d;
+    background-color: #7FFF00;
   }
 }
 body {
